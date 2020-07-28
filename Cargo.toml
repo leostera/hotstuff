@@ -1,0 +1,17 @@
+[package]
+name = "hotstuff"
+version = "0.1.0"
+authors = ["Leandro Ostera <leandro@ostera.io>"]
+edition = "2018"
+
+[dependencies]
+crossbeam-channel = "0.4.0"
+futures = { version = "0.3", default-features = false, features = ["alloc"] }
+http = "0.2"
+hyper = "0.13"
+mime = "0.3"
+rust-crypto = "0.2.36"
+nipper = "0.1.8"
+notify = "5.0.0-pre.3"
+structopt = "0.3"
+tokio = { version = "0.2", features = ["macros", "tcp", "rt-core"] }
