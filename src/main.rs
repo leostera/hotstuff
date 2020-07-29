@@ -1,4 +1,5 @@
 use fern::colors::{Color, ColoredLevelConfig};
+use log::info;
 use std::path::PathBuf;
 use structopt::StructOpt;
 
@@ -51,7 +52,7 @@ impl HotStuff {
                         "\x1B[{}m",
                         colors_line.get_color(&record.level()).to_fg_str()
                     ),
-                    date = chrono::Local::now().format("%Y-%m-%d %H:%M:%S"),
+                    date = chrono::Local::now().format("%H:%M:%S"),
                     level = colors_level.color(record.level()),
                     message = message,
                 ));
@@ -161,6 +162,8 @@ struct BuildOpt {
 
 impl BuildOpt {
     async fn build(self) {
+        let t0 = std::time::Instant::now();
+        info!("Building project...");
         let project = model::Project::new()
             .with_root(self.root)
             .with_output_dir(self.output_dir);
@@ -176,6 +179,7 @@ impl BuildOpt {
         };
 
         let _artifacts = graph.execute();
+        info!("Done in {}ms", t0.elapsed().as_millis());
     }
 }
 
