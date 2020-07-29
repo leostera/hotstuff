@@ -88,7 +88,7 @@ fn plan_site(root: PathBuf, output_dir: PathBuf, files: &Vec<PathBuf>) -> Option
             }
         })
         .filter(|p| {
-            !p.ends_with("cactus-project")
+            !p.ends_with("hotstuff-project")
                 && !p.ends_with("site")
                 && !p.ends_with("swp")
                 && !p.ends_with("swo")
