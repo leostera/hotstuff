@@ -124,7 +124,9 @@ impl ServeOpt {
             .with_root(self.root)
             .with_output_dir(self.output_dir);
 
-        build_graph::plan_build(project.clone()).execute();
+        build_graph::plan_build(project.clone())
+            .compute_diff()
+            .execute();
 
         http_server::Server::from_project(project)
             .with_port(self.port)
