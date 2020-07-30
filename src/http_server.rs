@@ -1,4 +1,4 @@
-use log::{debug, error, info, trace, warn};
+use log::{error, info};
 
 use crate::build_graph;
 use crate::build_rules::Artifact;
@@ -84,7 +84,7 @@ async fn wait_for_changes(
                         Artifact::File(path) => path.to_str().unwrap().to_string(),
                         _ => "".to_string(),
                     }
-                    .replace(project.clone().output_dir().clone().to_str().unwrap(), "")
+                    .replace(project.clone().output_dir().to_str().unwrap(), "")
                 })
                 .collect();
             let reply = format!("{{\"changes\": {:?} }}", artifacts);
@@ -106,7 +106,7 @@ async fn serve_file(root: PathBuf, req: Request<Body>) -> Result<Response<Body>,
 
     let file_ext = file_path
         .extension()
-        .unwrap_or(std::ffi::OsStr::new(""))
+        .unwrap_or_else(|| std::ffi::OsStr::new(""))
         .to_str()
         .unwrap();
 

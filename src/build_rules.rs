@@ -41,7 +41,7 @@ pub fn compile_unit(cunit: CompilationUnit) -> Result<Artifact, impl std::error:
             std::fs::create_dir_all(path_str).map(|_| Artifact::File(path))
         }
 
-        CompilationUnit::CacheHit { unit: _ } => Ok(Artifact::Nothing),
+        CompilationUnit::CacheHit { .. } => Ok(Artifact::Nothing),
 
         CompilationUnit::Copy { input, output } => {
             std::fs::copy(input, output.clone()).map(|_| Artifact::File(output))
@@ -62,8 +62,8 @@ pub fn compile_unit(cunit: CompilationUnit) -> Result<Artifact, impl std::error:
             output,
             template,
         } => {
-            let raw = std::fs::read_to_string(input.clone())?;
-            let template = std::fs::read_to_string(template.clone())?;
+            let raw = std::fs::read_to_string(input)?;
+            let template = std::fs::read_to_string(template)?;
             let compiled = template.replace("{| document |}", &raw);
             std::fs::write(output.clone(), compiled).map(|_| Artifact::File(output))
         }

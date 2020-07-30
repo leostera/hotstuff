@@ -32,11 +32,11 @@ struct HotStuff {
 
 impl HotStuff {
     async fn run(self) {
-        self.clone().setup_logging();
+        self.setup_logging();
         self.cmd.run().await;
     }
 
-    fn setup_logging(self) {
+    fn setup_logging(&self) {
         let colors_line = ColoredLevelConfig::new()
             .error(Color::Red)
             .warn(Color::Yellow)
@@ -170,17 +170,17 @@ impl BuildOpt {
             .with_root(self.root)
             .with_output_dir(self.output_dir);
 
-        let graph = {
-            let graph = build_graph::plan_build(project);
+        let build_plan = {
+            let build_plan = build_graph::plan_build(project);
 
             if self.force {
-                graph
+                build_plan
             } else {
-                graph.compute_diff()
+                build_plan.compute_diff()
             }
         };
 
-        let _artifacts = graph.execute();
+        let _artifacts = build_plan.execute();
         info!("Done in {}ms", t0.elapsed().as_millis());
     }
 }

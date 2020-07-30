@@ -61,7 +61,7 @@ impl BuildPlan {
 fn plan_site(root: PathBuf, output_dir: PathBuf, files: &Vec<PathBuf>) -> Option<BuildPlan> {
     let site = Sitefile::from_dir_path(root.clone())?;
     let (docs, _): (Vec<String>, Vec<String>) = files
-        .into_iter()
+        .iter()
         .map(|p| p.file_name().unwrap())
         .map(|p| String::from(p.to_str().unwrap()))
         .partition(|p| p.ends_with("html") || p.ends_with("md"));
@@ -69,15 +69,13 @@ fn plan_site(root: PathBuf, output_dir: PathBuf, files: &Vec<PathBuf>) -> Option
     let template = site.clone().template();
 
     let assets: Vec<BuildPlan> = site
-        .clone()
         .assets()
-        .unwrap_or(vec![])
+        .unwrap_or_else(|| vec![])
         .into_iter()
         .flat_map(|p| {
             if p.to_str().unwrap().eq(".") {
                 fs::read_dir(root.clone())
                     .expect("Could not read root folder")
-                    .into_iter()
                     .map(|e| e.unwrap().path())
                     .filter(|p| !p.is_dir())
                     .map(|p| p.file_name().unwrap().to_str().unwrap().to_string())
@@ -96,7 +94,7 @@ fn plan_site(root: PathBuf, output_dir: PathBuf, files: &Vec<PathBuf>) -> Option
         })
         .map(|a| CompilationUnit::Copy {
             input: root.clone().join(a.clone()),
-            output: output_dir.clone().join(a.clone()),
+            output: output_dir.clone().join(a),
         })
         .map(BuildPlan::start_with)
         .collect();
@@ -122,7 +120,7 @@ fn plan_site(root: PathBuf, output_dir: PathBuf, files: &Vec<PathBuf>) -> Option
                 Some(template) => {
                     let cunit = CompilationUnit::Template {
                         input: output.clone(),
-                        output: output.clone(),
+                        output,
                         template: root.clone().join(template),
                     };
                     let template = vec![BuildPlan::start_with(cunit)];
@@ -140,8 +138,8 @@ fn plan_site(root: PathBuf, output_dir: PathBuf, files: &Vec<PathBuf>) -> Option
 
     if let Some(template) = &template {
         let copy_template = CompilationUnit::Copy {
-            input: root.clone().join(template),
-            output: output_dir.clone().join(template),
+            input: root.join(template),
+            output: output_dir.join(template),
         };
         copy_and_compile_docs.push(BuildPlan::start_with(copy_template).and_then(docs))
     } else {
@@ -161,22 +159,18 @@ fn find_sites(root: PathBuf, output_dir: PathBuf) -> Vec<BuildPlan> {
     if root.is_dir() {
         let (files, dirs) = fs::read_dir(root.clone())
             .unwrap()
-            .into_iter()
             .map(|e| e.unwrap().path())
             .partition(|p| !p.is_dir());
 
-        let root_graph = plan_site(root.clone(), output_dir.clone(), &files);
+        let root_graph = plan_site(root, output_dir.clone(), &files);
 
         let mut subsites: Vec<BuildPlan> = dirs
-            .clone()
             .into_iter()
             .filter(|subroot| !subroot.eq(&output_dir.clone()))
             .flat_map(|subroot| {
                 find_sites(
                     subroot.clone(),
-                    output_dir
-                        .clone()
-                        .join(subroot.clone().file_name().unwrap()),
+                    output_dir.clone().join(subroot.file_name().unwrap()),
                 )
             })
             .collect();

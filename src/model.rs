@@ -2,9 +2,9 @@ use std::path::PathBuf;
 
 use crate::parser::{parse_sexp, SExpr};
 
-const SITEFILE_NAME: &'static str = "site";
+const SITEFILE_NAME: &str = "site";
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default)]
 pub struct Project {
     root: PathBuf,
     output_dir: PathBuf,
@@ -60,7 +60,7 @@ impl Sitefile {
         let site_path = root.clone().join(Sitefile::name());
         if let Ok(file) = std::fs::read_to_string(site_path) {
             let mut sitefile = Sitefile {
-                dir: root.clone(),
+                dir: root,
                 template: None,
                 assets: None,
             };
@@ -71,7 +71,7 @@ impl Sitefile {
                     if name == SExpr::Atom("assets".to_string()) {
                         sitefile.assets = Some(
                             sexp[1..]
-                                .into_iter()
+                                .iter()
                                 .map(|a| {
                                     if let SExpr::Atom(a) = a {
                                         a.to_string()
