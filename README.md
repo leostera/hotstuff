@@ -3,40 +3,29 @@
 <p align="center"> A composable, incremental, no-nonsense static site generator </p>
 
 <div align="center">
-  <a href="https://www.patreon.com/AbstractMachines">
+  <a align="center" href="https://www.patreon.com/AbstractMachines">
     <img alt="Become a Patron" src="https://c5.patreon.com/external/logo/become_a_patron_button.png" width="150px" />
   </a>
 </div>
 
-hotstuff is **no-nonsense** -- it makes almost no assumptions about how you
-structure or write your content.
+Yes, we know of `{some other tool}`. No, it wasn't what we needed.
 
-hotstuff is **composable** -- touch a few files in your existing folder structure
-and it'll just work.
+hotstuff is **no-nonsense** &mdash; it makes almost no assumptions about how
+you structure or write your content. There's also no plugins whatsoever.
 
-hotstuff is **incremental** -- it aggressively caches your project so you can use
-it on thousands of files.
+hotstuff is **composable** &mdash; touch a few files in your existing folder
+structure and it'll just work. Near zero-cost, and your content is always fully
+portable.
 
-Honestly the best part is that you are free to drop your files however the hell
-you feel like. Seriously, just put a bunch of markdown files and create an
-empty `site` file near them. You're done.
-
-It has 3 features:
-
-1. it preserves your project layout
-2. it is crazy fast
-3. it has a tiny live-reloading server
-
-That is it. You can write your content in Markdown and it will be compiled to
-HTML following CommonMark. You can write your content in HTML and it will not
-be touched.
+hotstuff is **incremental** &mdash;- it aggressively caches your project so you
+can use it on hundreds of thousands of files.
 
 ## Getting Started
 
-If you put a `hotstuff-project` file on the root of your project, hotstuff will look
-throughout your whole project for `site` files.
+If you put a `hotstuff-project` file on the root of your project, hotstuff will
+look throughout your whole project for `site` files.
 
-`site` files simply tell `hotstuff` that this particular folder should be compiled
+`site` files tell `hotstuff` that this particular folder should be compiled
 into a website.
 
 So if you have your posts in the following structure:
@@ -60,8 +49,8 @@ my/website λ touch hotstuff-project
 my/website λ touch pages/site sections/site
 ```
 
-And you can run `hotstuff` to compile the website using the same tree structure
-under a `_public` folder:
+And you can run `hotstuff build` to compile the website using the same tree
+structure under a `_public` folder:
 
 ```sh
 my/website λ hotstuff build
@@ -147,8 +136,9 @@ the files in the folder copied over. This is not recursive.
 
 ## Credits
 
-hotstuff is inspired by:
+hotstuff is inspired by prior art:
 
 * the `cactus` static site generator
 * the `dune` build system, with its composability
-* the `bazel` build system, with its aggressive incremental compilation techniques
+* the `bazel` build system, with its aggressive incremental compilation
+  techniques
