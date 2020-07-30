@@ -56,7 +56,7 @@ deploy:
   # - Encrypt it. Go to https://ci.appveyor.com/tools/encrypt
   # - Paste the output down here
   auth_token:
-    securie: 3nBjKt3AZEFEYHJov6ksVLu5ZnRnn3ymj3IYWnH2GVEb5BucxoAS4+pj1uFjFgmH
+    secure: 3nBjKt3AZEFEYHJov6ksVLu5ZnRnn3ymj3IYWnH2GVEb5BucxoAS4+pj1uFjFgmH
   description: ''
   on:
     RUST_VERSION: stable
