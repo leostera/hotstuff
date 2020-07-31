@@ -6,7 +6,7 @@
   <img alt="Travis (.org)" src="https://img.shields.io/travis/AbstractMachinesLab/hotstuff?style=flat-square">
 </div>
 
-Yes, we know of `{some other tool}`. No, it wasn't what we needed.
+> Read the blog post: [AM010 - Hot Stuff](https://abstractmachines.dev/posts/am010-hot-stuff.html)
 
 hotstuff is **turnkey** &mdash; it makes almost no assumptions about how
 you structure or write your content. There's also no plugins whatsoever.
