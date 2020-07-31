@@ -1,6 +1,6 @@
 {
   "name": "@abstractmachines/hotstuff",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A composable, turnkey document compiler",
   "bin": {
     "hotstuff": "./hotstuff"

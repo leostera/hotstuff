@@ -4,7 +4,10 @@ test:
 	rm -rf node_modules
 	yarn
 
-publish: test publish.npm publish.github
+publish: README.md test publish.npm publish.github
+
+README.md: ../README.md
+	cp ../README.md .
 
 publish.npm:
 	npm publish --access public
