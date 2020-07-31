@@ -3,9 +3,7 @@
 <p align="center"> A composable, incremental, no-nonsense static site generator </p>
 
 <div align="center">
-  <a align="center" href="https://www.patreon.com/AbstractMachines">
-    <img alt="Become a Patron" src="https://c5.patreon.com/external/logo/become_a_patron_button.png" width="150px" />
-  </a>
+  <img alt="Travis (.org)" src="https://img.shields.io/travis/AbstractMachinesLab/hotstuff?style=flat-square">
 </div>
 
 Yes, we know of `{some other tool}`. No, it wasn't what we needed.
@@ -182,3 +180,9 @@ hotstuff is inspired by prior art:
 * the `dune` build system, with its composability
 * the `bazel` build system, with its aggressive incremental compilation
   techniques
+
+If you'd like to support this project consider doing so on Patreon:
+
+<a href="https://www.patreon.com/AbstractMachines">
+<img alt="Become a Patron" src="https://c5.patreon.com/external/logo/become_a_patron_button.png" width="150px" />
+</a>
