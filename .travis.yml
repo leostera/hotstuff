@@ -1,77 +1,54 @@
-# Based on the "trust" template v0.1.2
-# https://github.com/japaric/trust/tree/v0.1.2
-
 dist: trusty
 language: rust
 services: docker
 sudo: required
-
 env:
   global:
-    - CRATE_NAME=hotstuff
-
+  - CRATE_NAME=hotstuff
 matrix:
   include:
-    # Linux
-    - env: TARGET=aarch64-unknown-linux-gnu
-    - env: TARGET=arm-unknown-linux-gnueabi
-    - env: TARGET=armv7-unknown-linux-gnueabihf
-    - env: TARGET=mips-unknown-linux-gnu
-    - env: TARGET=mips64-unknown-linux-gnuabi64
-    - env: TARGET=mips64el-unknown-linux-gnuabi64
-    - env: TARGET=mipsel-unknown-linux-gnu
-    - env: TARGET=s390x-unknown-linux-gnu DISABLE_TESTS=1
-    - env: TARGET=x86_64-unknown-linux-gnu
-    - env: TARGET=x86_64-unknown-linux-musl
-
-    # OSX
-    - env: TARGET=x86_64-apple-darwin
-      os: osx
-
-    # *BSD
-    - env: TARGET=x86_64-unknown-netbsd DISABLE_TESTS=1
-
-    # Windows
-    - env: TARGET=x86_64-pc-windows-gnu
-
+  - env: TARGET=aarch64-unknown-linux-gnu
+  - env: TARGET=arm-unknown-linux-gnueabi
+  - env: TARGET=armv7-unknown-linux-gnueabihf
+  - env: TARGET=mips-unknown-linux-gnu
+  - env: TARGET=mips64-unknown-linux-gnuabi64
+  - env: TARGET=mips64el-unknown-linux-gnuabi64
+  - env: TARGET=mipsel-unknown-linux-gnu
+  - env: TARGET=s390x-unknown-linux-gnu DISABLE_TESTS=1
+  - env: TARGET=x86_64-unknown-linux-gnu
+  - env: TARGET=x86_64-unknown-linux-musl
+  - env: TARGET=x86_64-apple-darwin
+    os: osx
+  - env: TARGET=x86_64-unknown-netbsd DISABLE_TESTS=1
+  - env: TARGET=x86_64-pc-windows-gnu
 before_install:
-  - set -e
-  - rustup self update
-
+- set -e
+- rustup self update
 install:
-  - sh ci/install.sh
-  - source ~/.cargo/env || true
-
+- sh ci/install.sh
+- source ~/.cargo/env || true
 script:
-  - bash ci/script.sh
-
+- bash ci/script.sh
 after_script: set +e
-
 before_deploy:
-  - sh ci/before_deploy.sh
-
+- sh ci/before_deploy.sh
 deploy:
+  provider: releases
   api_key:
-    secure: "H8Edrl/RlktUev4VFLmnxRf74i/f6wJLpKARTOQdrsoyJJxuCl32+mF2PQM4yBB9MGWrzYe4CaFuoYbYE1vqJfzhlHxYbumPmsZVoTWVg0GLRtF0PkpyCfIKDzKYzg1+A8UynQhL3KzAg6eKZlLLtOADPw2NWzSqgbQrc8eIYPHyB/bkXLBQMzge05ONmS71RBfXUOU7XC9MVqemmYDKBkNNNyhxsuAwPEywKBm1CCQPxWv0kBZrNwokdzDFW2mqrjD8HtBVOwZcD5yMfuZ8jCohja4Syq802b2ZVnyzRZW4b/OYHBTZuJ2tyjNxw6qunmfcmJr42eTv3fWKa/3Y/IEKXZJl4w/X3gafmnLZU1S+490WZAY5U2GUkn7QH3mMmfOecX5YsW+smvKZqr2Y6GNqs5TOGAs1qtssaMC/vDyKrQMJGHAxZa3svo8rm9f2zA3p7bxxgcPFcmAk4Dde4/lsYp/aOhdmT5X7CLx2+grmN7rWv6pNK/CaPzTw3dPlyCky1ivVrr/8EYln1Fo48EOLredFIKB0lxmjqmCeN7t00VG9ShXKJoxilsVbvT3NuoAoqKI6ZkKdr4l7AdlqoDOw3q3IcWBoL0oeV9s60K278IA+EG9f9vJVrXNCBB3F+BfAUiji4u2hlkcM6YdGvluWGa8lnQQF1cdaZdZQwAM="
+    secure: Rz9CeN6Ntmlg1BeTSiKEl+grdwaNnDHvM/QptSVYz4Py7IGaVWV0RBwj90vo7c3w9fLhmp1u6Tj6yFerJlRSskDN3TO4jDqtZu6ybRU9WLtkBUnUErUN+fUavjSBqmcNshEWlsIG72lfN527FElLmKuzwgoPqd8fpkoIrPKMdCnuURVqEY6TtauYfVc8/IUQyHjWIa0U1ph1Lg+R0eCjPB1yjDV8h2JZmp52Dtq3Ji1HKnt8kc9UQ0iqzMxA1LO0eQHPCp8u1jp8INDCNj193xIXhE+35y2ekh1ybKy0UsTU2KkQr46U3yz8JaWASvwZha4kk/tvL65frdqh17YBsLitB0rqUY0KxHEZv/+pQv4l/oRLbFGvGxdqXfKDX+oiBWyXp7sa12LD+xRo8AhPKT3aJ1ZYS0V9TJ8YJwnKR0EYU3XhZlciGRSG7vkrtbsa9qyw/takD052fl+nWbKvVWo4kvrWnnFbLuMGkSYqWgA8xKnApToQKEtFYa8C6VutJ95H/PxPIHum5P9ZCXMWdzUeajy27jvBIjbS4XR88WqSfWYIdwK2n5MZjVSGS+M4+Fb85s9jQ8RV33GOHTRtOItjKzqQo1JwF4d11BBNMBg5tEUvz+C7+pFSuV+9Wymt+tXvuaepJiAHn5AfR4OQhmvl4wNu6QaZrASkcplxCxU=
   file_glob: true
   file: $CRATE_NAME-$TRAVIS_TAG-$TARGET.*
   on:
     condition: $TRAVIS_RUST_VERSION = stable
     tags: true
-  provider: releases
   skip_cleanup: true
-
 cache: cargo
 before_cache:
-  # Travis can't cache files that are not readable by "others"
-  - chmod -R a+r $HOME/.cargo
-
+- chmod -R a+r $HOME/.cargo
 branches:
   only:
-    # release tags
-    - /^v\d+\.\d+\.\d+.*$/
-    - main
-
+  - "/^v\\d+\\.\\d+\\.\\d+.*$/"
+  - main
 notifications:
   email:
     on_success: never
