@@ -12,7 +12,7 @@ use hotstuff::model;
     name = "hotstuff",
     setting = structopt::clap::AppSettings::ColoredHelp,
     about = "
-hotstuff is a composable no-nonsense static site generator.
+hotstuff is a composable turnkey document compiler.
 
 It does 2 things:
 

@@ -5,7 +5,7 @@ console.log(`
 ██████░▄▄░█░██░██░████▄▄▀██░██░██░█░▄██░▄███████
 ██████▄██▄██▄▄███▄████▄▄▄██▄███▄▄▄█▄███▄████████
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-You're running the no-nonsense HotStuff server.
+You're running the turnkey HotStuff server.
 `);
 
 let assets = [

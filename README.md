@@ -1,6 +1,6 @@
 <h1 align="center"> 🔥 hotstuff </h1>
 
-<p align="center"> A composable, incremental, no-nonsense static site generator </p>
+<p align="center"> A composable, incremental, turnkey document compiler </p>
 
 <div align="center">
   <img alt="Travis (.org)" src="https://img.shields.io/travis/AbstractMachinesLab/hotstuff?style=flat-square">
@@ -8,7 +8,7 @@
 
 Yes, we know of `{some other tool}`. No, it wasn't what we needed.
 
-hotstuff is **no-nonsense** &mdash; it makes almost no assumptions about how
+hotstuff is **turnkey** &mdash; it makes almost no assumptions about how
 you structure or write your content. There's also no plugins whatsoever.
 
 hotstuff is **composable** &mdash; touch a few files in your existing folder
@@ -122,7 +122,7 @@ There's no in-memory build state, and the build diffs are recomputed in the
 background for you. So you get a re-build within a few milliseconds of changing
 a file, and the browser will only reload the assets that changed.
 
-It doesn't get anymore no-nonsense than this.
+It doesn't get anymore turnkey than this.
 
 ### Templating
 
