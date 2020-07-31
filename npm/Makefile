@@ -4,7 +4,7 @@ test:
 	rm -rf node_modules
 	yarn
 
-publish: README.md test publish.npm publish.github
+publish: README.md publish.npm publish.github
 
 README.md: ../README.md
 	cp ../README.md .
