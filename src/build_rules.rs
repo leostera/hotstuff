@@ -1,3 +1,4 @@
+use nipper::Document;
 use std::ffi::OsStr;
 use std::path::PathBuf;
 
@@ -63,8 +64,12 @@ pub fn compile_unit(cunit: CompilationUnit) -> Result<Artifact, impl std::error:
             template,
         } => {
             let raw = std::fs::read_to_string(input)?;
+            let html = Document::from(&raw);
+            let title = html.select("h1").text();
             let template = std::fs::read_to_string(template)?;
-            let compiled = template.replace("{| document |}", &raw);
+            let compiled = template
+                .replace("{| title |}", &title)
+                .replace("{| document |}", &raw);
             std::fs::write(output.clone(), compiled).map(|_| Artifact::File(output))
         }
     }
