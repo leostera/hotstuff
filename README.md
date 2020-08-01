@@ -18,6 +18,8 @@ portable.
 hotstuff is **incremental** &mdash;- it aggressively caches your project so you
 can use it on hundreds of thousands of files.
 
+Just an `yarn global add @abstractmachines/hotstuff` away.
+
 ## Getting Started
 
 If you put a `hotstuff-project` file on the root of your project, hotstuff will
@@ -88,8 +90,18 @@ Upload to S3, Now, GCS, Github pages, or wherever really.
 
 ## Installation
 
-Right now this project is only available via source, but you can install it
-locally if you have a running Rust toolchain with:
+### NPM
+
+If you're already running `npm` or `yarn`, you can just run `yarn global add
+@abstractmachines/hotstuff` or `npm install -g @abtrasctmachines/hotstuff` to
+get the right binary in your computer.
+
+If you're running against the Github package registry, our scoped name is
+`@abstractmachineslab` instead.
+
+### Source 
+
+You can install it locally via source if you have a running Rust toolchain with:
 
 ```sh
 curl https://codeload.github.com/AbstractMachinesLab/hotstuff/tar.gz/main > hotstuff.tar.gz
