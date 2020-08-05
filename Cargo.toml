@@ -2,6 +2,7 @@
 name = "hotstuff"
 description = "A composable, turnkey document compiler"
 version = "0.1.9"
+license = "MIT"
 authors = ["Leandro Ostera <leandro@ostera.io>"]
 edition = "2018"
 readme = "README.md"
