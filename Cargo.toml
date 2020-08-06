@@ -2,11 +2,17 @@
 name = "hotstuff"
 description = "A composable, turnkey document compiler"
 version = "0.1.9"
-license = "MIT"
 authors = ["Leandro Ostera <leandro@ostera.io>"]
 edition = "2018"
+homepage = "https://github.com/AbstractMachinesLab/hotstuff"
+license-file = "LICENSE"
 readme = "README.md"
 repository = "https://github.com/AbstractMachinesLab/hotstuff"
+keywords = ["document", "compiler", "composable", "turnkey"]
+exclude = [
+  "./ci/",
+  "./npm/"
+]
 
 [dependencies]
 chrono = "0.4"
