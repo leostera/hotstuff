@@ -18,7 +18,11 @@ portable.
 hotstuff is **incremental** &mdash;- it aggressively caches your project so you
 can use it on hundreds of thousands of files.
 
-Just an `yarn global add @abstractmachines/hotstuff` away.
+Just one command away:
+
+* *Cargo*: `cargo install github.com/AbstractMachinesLab/hotstuff`
+* *Yarn*: `yarn global add @abstractmachines/hotstuff`
+* *NPM*: `npm install --global @abstractmachines/hotstuff`
 
 ## Getting Started
 
@@ -93,7 +97,7 @@ Upload to S3, Now, GCS, Github pages, or wherever really.
 ### NPM
 
 If you're already running `npm` or `yarn`, you can just run `yarn global add
-@abstractmachines/hotstuff` or `npm install -g @abtrasctmachines/hotstuff` to
+@abstractmachines/hotstuff` or `npm install -g @abstractmachines/hotstuff` to
 get the right binary in your computer.
 
 If you're running against the Github package registry, our scoped name is
