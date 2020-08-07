@@ -51,8 +51,10 @@ pub fn compile_unit(cunit: CompilationUnit) -> Result<Artifact, impl std::error:
         CompilationUnit::Compile { input, output } => {
             let raw = std::fs::read_to_string(input.clone())?;
             let ext = input.extension().and_then(OsStr::to_str).unwrap_or("");
+            let mut opts = comrak::ComrakOptions::default();
+            opts.render.unsafe_ = true;
             let compiled = match ext {
-                "md" => comrak::markdown_to_html(&raw, &comrak::ComrakOptions::default()),
+                "md" => comrak::markdown_to_html(&raw, &opts),
                 _ => raw,
             };
             std::fs::write(output.clone(), compiled).map(|_| Artifact::File(output))
