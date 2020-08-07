@@ -20,7 +20,7 @@ can use it on hundreds of thousands of files.
 
 Just one command away:
 
-* *Cargo*: `cargo install github.com/AbstractMachinesLab/hotstuff`
+* *Cargo*: `cargo install --git https://github.com/AbstractMachinesLab/hotstuff --branch main`
 * *Yarn*: `yarn global add @abstractmachines/hotstuff`
 * *NPM*: `npm install --global @abstractmachines/hotstuff`
 
