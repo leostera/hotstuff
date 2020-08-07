@@ -6,7 +6,7 @@
   <img alt="Travis (.org)" src="https://img.shields.io/travis/AbstractMachinesLab/hotstuff?style=flat-square">
 </div>
 
-> Read the blog post: [AM010 - Hot Stuff](https://abstractmachines.dev/posts/am010-hot-stuff.html)
+> Read the blog post: [AM010 - On Tolerating Complexity](https://abstractmachines.dev/posts/am010-on-tolerating-complexity.html)
 
 hotstuff is **turnkey** &mdash; it makes almost no assumptions about how
 you structure or write your content. There's also no plugins whatsoever.
