@@ -1,4 +1,3 @@
-<script>
 console.log(`
 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 ██████░██ █▀▄▄▀█▄░▄███░▄▄█▄░▄█░██░█░▄▄█░▄▄██████
@@ -7,6 +6,10 @@ console.log(`
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 You're running the turnkey HotStuff server.
 `);
+
+let path = window.location.pathname;
+let implicit_index = path.endsWith("/");
+let current_document = `${path}${implicit_index ? `index.html` : ""}`;
 
 let assets = [
   ...document.querySelectorAll("[src]"),
@@ -18,9 +21,7 @@ let assets = [
     return acc;
   },
   {
-    [window.location.pathname == "/"
-      ? "/index.html"
-      : window.location.pathname]: Symbol.for("reload"),
+    [current_document]: Symbol.for("reload"),
   }
 );
 
@@ -49,4 +50,3 @@ let wait_for_changes = () => {
 };
 
 wait_for_changes();
-</script>
