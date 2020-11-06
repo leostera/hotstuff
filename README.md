@@ -197,8 +197,5 @@ hotstuff is inspired by prior art:
 * the `bazel` build system, with its aggressive incremental compilation
   techniques
 
-If you'd like to support this project consider doing so on Patreon:
-
-<a href="https://www.patreon.com/AbstractMachines">
-<img alt="Become a Patron" src="https://c5.patreon.com/external/logo/become_a_patron_button.png" width="150px" />
-</a>
+If you'd like to support this project you can [sponsor us on
+Github](https://github.com/sponsors/AbstractMachinesLab).

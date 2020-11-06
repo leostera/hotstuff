@@ -53,6 +53,10 @@ pub fn compile_unit(cunit: CompilationUnit) -> Result<Artifact, impl std::error:
             let ext = input.extension().and_then(OsStr::to_str).unwrap_or("");
             let mut opts = comrak::ComrakOptions::default();
             opts.render.unsafe_ = true;
+            opts.parse.smart = true;
+            opts.extension.autolink = true;
+            opts.extension.header_ids = Some("".to_string());
+            opts.extension.footnotes = true;
             let compiled = match ext {
                 "md" => comrak::markdown_to_html(&raw, &opts),
                 _ => raw,

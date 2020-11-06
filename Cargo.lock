@@ -131,9 +131,9 @@ dependencies = [
 
 [[package]]
 name = "comrak"
-version = "0.8.0"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b818732a109eeabbe99fee28030ff8ecbd606889fcd25509ed933e6c69b7aa69"
+checksum = "bcfb8008d04126b176c76cbfdecf9a2ccb4bacc70af87c8da6136d63d7b7292a"
 dependencies = [
  "clap",
  "entities",
@@ -141,9 +141,11 @@ dependencies = [
  "pest",
  "pest_derive",
  "regex",
+ "shell-words",
  "twoway",
  "typed-arena",
  "unicode_categories",
+ "xdg",
 ]
 
 [[package]]
@@ -378,7 +380,7 @@ dependencies = [
 
 [[package]]
 name = "hotstuff"
-version = "0.1.10"
+version = "0.1.12"
 dependencies = [
  "chrono",
  "comrak",
@@ -1020,6 +1022,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "shell-words"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b6fa3938c99da4914afedd13bf3d79bcb6c277d1b2c398d23257a304d9e1b074"
+
+[[package]]
 name = "siphasher"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1393,3 +1401,9 @@ dependencies = [
  "winapi 0.2.8",
  "winapi-build",
 ]
+
+[[package]]
+name = "xdg"
+version = "2.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d089681aa106a86fade1b0128fb5daf07d5867a509ab036d99988dec80429a57"
